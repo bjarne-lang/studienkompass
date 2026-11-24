@@ -14,6 +14,7 @@ Das Ergebnis des Quiz dient nur zur Orientierung und ersetzt keine persönliche 
 | `styles.css` | Gestaltung für beide Seiten |
 | `site.js` | gemeinsame Einstellungen und Funktionen |
 | `fonts/` | selbst gehostete Schriften mit Lizenztexten |
+| `podcast/` | Podcast-Folge (M4A) und Transkript (Text, `## mm:ss · Titel` = Kapitel) |
 | `tests/` | automatisierte Tests |
 | `docs/abhaengigkeiten.md` | eingesetzte Schriften, Werkzeuge und Dienste |
 
