@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="de" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Podcast · Dual-Studienkompass</title>
+<meta name="description" content="Podcast „Welches Studium passt zu mir?“: Bjarne studiert dual, Felix in Vollzeit. Zum Anhören, mit Kapiteln und Transkript.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'%3E%3Ccircle cx='24.5' cy='24.5' r='18' fill='%23FFB800'/%3E%3Ccircle cx='21' cy='21' r='18' fill='%23003388' stroke='%23161616' stroke-width='2.5'/%3E%3Cg transform='rotate(35 21 21)' stroke='%23161616' stroke-width='1.2' stroke-linejoin='round'%3E%3Cpolygon points='21,8 25,21 17,21' fill='%23FFB800'/%3E%3Cpolygon points='17,21 25,21 21,33' fill='%23FFFFFF'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+
+<header class="site-head">
+  <div class="wrap head-inner">
+    <a class="brand" href="index.html">
+      <svg class="brand-mark" viewBox="0 0 44 44" aria-hidden="true" focusable="false">
+        <circle class="shadow" cx="24.5" cy="24.5" r="18"/>
+        <circle class="disc" cx="21" cy="21" r="18"/>
+        <path class="tick" d="M21 6v3M21 33v3M6 21h3M33 21h3"/>
+        <g transform="rotate(35 21 21)">
+          <polygon class="tip" points="21,8 25,21 17,21"/>
+          <polygon class="tail" points="17,21 25,21 21,33"/>
+        </g>
+        <circle class="hub" cx="21" cy="21" r="2.4"/>
+      </svg>
+      <span><span class="brand-word">Dual-Studien<em>kompass</em></span><small>VWA · Studienorientierung</small></span>
+    </a>
+    <nav class="site-nav" aria-label="Seitenbereiche">
+      <ul>
+        <li><a href="index.html#quiz">Quiz</a></li>
+        <li><a href="index.html#studiengaenge">Studiengänge</a></li>
+        <li><a href="index.html#vergleich">Vergleich</a></li>
+        <li><a href="podcast.html" aria-current="page">Podcast</a></li>
+      </ul>
+    </nav>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false">
+      <span class="switch" aria-hidden="true"></span><span class="label">Dunkelmodus</span>
+    </button>
+  </div>
+</header>
+
+<div class="wrap">
+  <main id="main">
+    <!-- Titel der Folge -->
+    <section class="band-ink" aria-labelledby="pod-title">
+      <div class="pod-hero">
+        <div class="pod-intro">
+          <span class="sticker" id="pod-episode">Podcast</span>
+          <h1 id="pod-title">„Welches Studium passt zu mir?“</h1>
+          <p class="lead" id="pod-description"></p>
+          <ul class="facts" id="pod-facts"></ul>
+        </div>
+        <div class="pod-cover" aria-hidden="true">
+          <svg viewBox="0 0 44 44" focusable="false">
+            <circle cx="24.5" cy="24.5" r="18" fill="#FFFFFF"/>
+            <circle cx="21" cy="21" r="18" fill="#003388" stroke="#161616" stroke-width="2"/>
+            <path d="M21 6v3M21 33v3M6 21h3M33 21h3" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+            <g transform="rotate(35 21 21)" stroke="#161616" stroke-width="1" stroke-linejoin="round">
+              <polygon points="21,8 25,21 17,21" fill="#FFB800"/>
+              <polygon points="17,21 25,21 21,33" fill="#FFFFFF"/>
+            </g>
+          </svg>
+          <span>Welches Studium passt zu mir?</span>
+          <small>Bjarne &amp; Felix</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- 01 Anhören -->
+    <section class="band-beige" aria-labelledby="listen-title">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">01</span>
+        <h2 id="listen-title"><span class="mark">Reinhören</span></h2>
+        <p class="hand" aria-hidden="true">Kopfhörer auf, los geht's</p>
+      </div>
+      <div class="pod-player">
+        <div class="player" id="player"></div>
+        <div class="chapters">
+          <h3>Kapitel</h3>
+          <ol id="chapters"></ol>
+          <p class="note" id="chapters-note"></p>
+        </div>
+      </div>
+      <div class="row pod-links">
+        <a class="btn" id="link-podcast" target="_blank" rel="noopener">Auf Spotify anhören</a>
+        <a class="btn ghost" id="link-instagram" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </section>
+
+    <!-- 02 Hosts -->
+    <section class="band-blue" aria-labelledby="hosts-title">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">02</span>
+        <h2 id="hosts-title">Zwei Wege, <span class="mark">zwei Studis</span></h2>
+        <p class="hand" aria-hidden="true">gedreht am 10.11. im VWA-Gemeinschaftsraum</p>
+      </div>
+      <div class="campaign">
+        <div class="person" data-person="bjarne"></div>
+        <div class="person" data-person="felix"></div>
+      </div>
+    </section>
+
+    <!-- 03 Transkript -->
+    <section class="band-plain" aria-labelledby="transcript-title">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">03</span>
+        <h2 id="transcript-title"><span class="mark">Transkript</span></h2>
+        <p class="hand" aria-hidden="true">lieber lesen als hören?</p>
+      </div>
+      <details class="transcript" id="transcript">
+        <summary>Ganze Folge als Text lesen</summary>
+        <div id="transcript-text"></div>
+      </details>
+      <div class="pod-next">
+        <p><b>Und welches Studium passt zu dir?</b> Mach den Studien-Check in ca. 5 Minuten.</p>
+        <a class="btn sun" href="index.html#quiz">Zum Quiz <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <p>Ein Projekt von Bjarne &amp; Felix · Podcast „Welches Studium passt zu mir?“</p>
+    <p>Die Seite läuft komplett in deinem Browser. Es werden keine Daten gespeichert, keine Cookies gesetzt und nichts getrackt.</p>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+<script>
+/* Podcast-Seite: Inhalte kommen aus PODCAST in site.js. */
+const toSeconds = (at) => at.split(":").map(Number).reduce((sum, part) => sum * 60 + part, 0);
+const formatTime = (sec) => {
+  const s = Math.round(sec), h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), r = s % 60;
+  const mm = String(m).padStart(h ? 2 : 1, "0"), ss = String(r).padStart(2, "0");
+  return h ? `${h}:${mm}:${ss}` : `${mm}:${ss}`;
+};
+
+function renderFacts(duration) {
+  const facts = $("pod-facts");
+  facts.innerHTML = "";
+  [PODCAST.episode, duration ? `${duration} Min.` : "Länge folgt", "Dual vs. Vollzeit"].forEach(t => facts.appendChild(el("li", {}, t)));
+}
+
+function renderPlayer() {
+  const box = $("player");
+  if (!PODCAST.file) {
+    box.classList.add("player-empty");
+    box.append(
+      el("span", { class: "sticker" }, "Bald online"),
+      el("p", {}, "Die Folge erscheint bald. Sobald sie offiziell ist, kannst du sie hier direkt anhören.")
+    );
+    return null;
+  }
+  const audio = el("audio", { controls: "", preload: "metadata", src: PODCAST.file, "aria-label": `${PODCAST.episode}: ${PODCAST.title}` });
+  audio.appendChild(el("p", {}, "Dein Browser kann die Folge nicht abspielen."));
+  if (!PODCAST.duration) audio.addEventListener("loadedmetadata", () => renderFacts(formatTime(audio.duration)));
+  box.appendChild(audio);
+  return audio;
+}
+
+function renderChapters(audio) {
+  const list = $("chapters");
+  if (!PODCAST.chapters.length) {
+    $("chapters-note").textContent = "Kapitelmarken ergänzen wir, sobald die Folge online ist.";
+    return;
+  }
+  for (const c of PODCAST.chapters) {
+    const b = el("button", { type: "button", class: "chapter", "aria-label": `Zu Kapitel „${c.title}“ springen, ${c.at}` });
+    b.append(el("span", { class: "at" }, c.at), el("span", {}, c.title));
+    if (audio) b.addEventListener("click", () => { audio.currentTime = toSeconds(c.at); audio.play(); });
+    else b.disabled = true;
+    const li = el("li");
+    li.appendChild(b);
+    list.appendChild(li);
+  }
+  if (!audio) $("chapters-note").textContent = "Die Kapitel lassen sich anspringen, sobald die Folge online ist.";
+}
+
+function renderTranscript() {
+  const box = $("transcript-text");
+  const paragraphs = PODCAST.transcript.split(/\n\s*\n/).map(t => t.trim()).filter(Boolean);
+  if (!paragraphs.length) {
+    box.appendChild(el("p", { class: "note" }, "Das Transkript ergänzen wir, sobald die Folge online ist."));
+    return;
+  }
+  paragraphs.forEach(t => box.appendChild(el("p", {}, t)));
+}
+
+$("pod-episode").textContent = `Podcast · ${PODCAST.episode}`;
+$("pod-title").textContent = `„${PODCAST.title}“`;
+$("pod-description").textContent = PODCAST.description;
+renderFacts(PODCAST.duration);
+renderChapters(renderPlayer());
+renderTranscript();
+renderPeople();
+setupLink("link-podcast", LINKS.podcast, "Auf Spotify anhören");
+setupLink("link-instagram", LINKS.instagram, "Instagram");
+</script>
+</body>
+</html>

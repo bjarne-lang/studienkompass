@@ -1,0 +1,10 @@
+{
+  "name": "studienkompass",
+  "private": true,
+  "description": "Dual-Studienkompass: statische Quiz-Website, nur die Tests laufen mit Node.",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test"
+  }
+}

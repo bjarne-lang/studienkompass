@@ -1,0 +1,9 @@
+.DS_Store
+node_modules/
+
+# lokale Werkzeug-Einstellungen
+.claude/
+
+# Kampagnenmaterial, nicht Teil der Website
+brandguide-instagram.md
+logo-instagram-1080.png

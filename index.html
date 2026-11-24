@@ -1,0 +1,1038 @@
+<!doctype html>
+<html lang="de" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dual-Studienkompass</title>
+<meta name="description" content="Welches Studium passt zu dir? Quiz zu Studienform und Fachrichtung, dazu die Studiengänge der BA Lüneburg und der Vergleich dual vs. Vollzeit.">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'%3E%3Ccircle cx='24.5' cy='24.5' r='18' fill='%23FFB800'/%3E%3Ccircle cx='21' cy='21' r='18' fill='%23003388' stroke='%23161616' stroke-width='2.5'/%3E%3Cg transform='rotate(35 21 21)' stroke='%23161616' stroke-width='1.2' stroke-linejoin='round'%3E%3Cpolygon points='21,8 25,21 17,21' fill='%23FFB800'/%3E%3Cpolygon points='17,21 25,21 21,33' fill='%23FFFFFF'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+
+
+<header class="site-head">
+  <div class="wrap head-inner">
+    <a class="brand" href="#quiz">
+      <svg class="brand-mark" viewBox="0 0 44 44" aria-hidden="true" focusable="false">
+        <circle class="shadow" cx="24.5" cy="24.5" r="18"/>
+        <circle class="disc" cx="21" cy="21" r="18"/>
+        <path class="tick" d="M21 6v3M21 33v3M6 21h3M33 21h3"/>
+        <g transform="rotate(35 21 21)">
+          <polygon class="tip" points="21,8 25,21 17,21"/>
+          <polygon class="tail" points="17,21 25,21 21,33"/>
+        </g>
+        <circle class="hub" cx="21" cy="21" r="2.4"/>
+      </svg>
+      <span><span class="brand-word">Dual-Studien<em>kompass</em></span><small>VWA · Studienorientierung</small></span>
+    </a>
+    <nav class="site-nav" aria-label="Seitenbereiche">
+      <ul>
+        <li><a href="#quiz">Quiz</a></li>
+        <li><a href="#studiengaenge">Studiengänge</a></li>
+        <li><a href="#vergleich">Vergleich</a></li>
+        <li><a href="podcast.html">Podcast</a></li>
+      </ul>
+    </nav>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false">
+      <span class="switch" aria-hidden="true"></span><span class="label">Dunkelmodus</span>
+    </button>
+  </div>
+</header>
+
+<div class="wrap">
+  <main id="main">
+    <!-- 01 Quiz -->
+    <section id="quiz" class="quiz-zone band-beige" aria-label="Quiz">
+
+      <div id="view-start" class="view fade">
+        <div class="ink start">
+          <div class="start-text">
+            <span class="sticker">Dein Studien-Check · ca. 5 Minuten</span>
+            <h1 id="start-title" tabindex="-1">Welches Studium passt <em>zu dir?</em></h1>
+            <p class="lead">Erst klären wir, wie du studieren willst: dual oder in Vollzeit. Danach zeigt dir der Kompass, welche Fachrichtung zu dir passt und welche Vertiefung dazu passen könnte.</p>
+            <ul class="facts" id="start-facts"></ul>
+            <div class="row"><button class="btn sun" id="start" type="button">Quiz starten <span aria-hidden="true">→</span></button></div>
+          </div>
+          <div class="compass-sticker"><svg class="compass idle" id="compass-start" viewBox="0 0 200 200" aria-hidden="true"></svg></div>
+          <p class="hand" aria-hidden="true">von Studis für Studis</p>
+        </div>
+        <ol class="steps">
+          <li>
+            <span class="num">1</span>
+            <b>Deine Studienform</b>
+            <span>Gehalt oder Semesterferien? Praxis oder Theorie? Volle Woche oder Freiraum?</span>
+            <div class="chips"><span class="tag" style="--c: var(--accent)">Duales Studium</span><span class="tag" style="--c: var(--muted)">Vollzeitstudium</span></div>
+          </li>
+          <li>
+            <span class="num">2</span>
+            <b>Deine Fachrichtung</b>
+            <span>Welche Interessen und Stärken bringst du mit? Mit Schiebereglern, Mehrfachauswahl und Rangfolge.</span>
+            <div class="chips"><span class="tag" style="--c: var(--medien)">Medien/IT</span><span class="tag" style="--c: var(--bwl)">BWL</span><span class="tag" style="--c: var(--sozial)">Soziales</span></div>
+          </li>
+        </ol>
+      </div>
+
+      <div id="view-quiz" class="view" hidden>
+        <div class="panel">
+          <div class="qtop">
+            <span class="sticker tilt-r" id="q-part">Teil 1 · Studienform</span>
+            <span class="count" id="q-count">1 / 18</span>
+          </div>
+          <div class="segs" id="segs" role="progressbar" aria-label="Fortschritt" aria-valuemin="0"></div>
+          <div class="qhead">
+            <div class="qmeta"><span class="qnum" id="q-num">Frage 01</span><span class="qhint" id="q-hint"></span></div>
+            <h2 id="q-text" tabindex="-1">…</h2>
+          </div>
+          <div class="opts" id="q-opts" role="group" aria-labelledby="q-text"></div>
+          <p class="qstatus" id="q-status" aria-live="polite"></p>
+          <div class="qnav">
+            <button class="btn quiet" id="back" type="button">← Zurück</button>
+            <button class="btn" id="q-next" type="button" hidden>Weiter <span aria-hidden="true">→</span></button>
+          </div>
+        </div>
+      </div>
+
+      <div id="view-break" class="view" hidden>
+        <div class="ink view">
+          <span class="sticker">Teil 1 geschafft</span>
+          <div class="half">
+            <svg viewBox="0 0 84 84" aria-hidden="true">
+              <circle class="bg" cx="42" cy="42" r="34"/>
+              <circle class="fg" id="half-arc" cx="42" cy="42" r="34" transform="rotate(-90 42 42)"/>
+            </svg>
+            <h2 id="break-title" tabindex="-1">Wie du studieren willst, wissen wir jetzt.</h2>
+          </div>
+          <p>Dein Ergebnis zur Studienform verraten wir dir erst am Ende. Jetzt geht es darum, welche Fachrichtung zu dir passt: Medien/IT, BWL oder Soziales.</p>
+          <blockquote class="quote" id="break-quote"></blockquote>
+          <div class="row">
+            <button class="btn sun" id="to-part2" type="button">Weiter zu Teil 2 <span aria-hidden="true">→</span></button>
+            <button class="btn quiet" id="break-back" type="button">← Letzte Frage ändern</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="view-result" class="view" hidden>
+        <div class="ink ticket">
+          <span class="sticker">Dein Ergebnis</span>
+          <h2 id="r-title" tabindex="-1"><span class="l1" id="r-l1">…</span><span class="l2" id="r-l2">…</span></h2>
+          <p class="sub">So sieht dein Kompass aus. Unten findest du, was dahintersteckt und welche Antworten den Ausschlag gegeben haben.</p>
+        </div>
+
+        <div class="res-block">
+          <span class="block-label"><span class="n">1</span>Deine Studienform</span>
+          <div class="res-split">
+            <div>
+              <h3 id="f-title">…</h3>
+              <p id="f-text"></p>
+              <div class="spectrum">
+                <p class="pct-line" id="f-pct"></p>
+                <div class="spectrum-track" aria-hidden="true"><span></span><span></span><span></span><i class="marker" id="f-marker"></i></div>
+                <div class="spectrum-labels" aria-hidden="true"><span>Vollzeit</span><span>Beides</span><span>Dual</span></div>
+              </div>
+              <div class="drivers"><h4>Das hat den Ausschlag gegeben</h4><ol id="f-drivers"></ol></div>
+            </div>
+            <div class="people" id="f-people"></div>
+          </div>
+        </div>
+
+        <div class="res-block">
+          <span class="block-label"><span class="n">2</span>Deine Fachrichtung</span>
+          <div class="dir-head">
+            <div class="compass-sticker"><svg class="compass" id="compass-result" viewBox="0 0 200 200" role="img" aria-label="Kompass zeigt auf deine Fachrichtung"></svg></div>
+            <div>
+              <h3 id="d-title">…</h3>
+              <p id="d-text"></p>
+              <div class="tags" id="d-tags"></div>
+            </div>
+          </div>
+          <div class="recs" id="d-recs"></div>
+          <div class="scores" id="d-scores"></div>
+          <div class="drivers"><h4>Das hat den Ausschlag gegeben</h4><ol id="d-drivers"></ol></div>
+        </div>
+
+        <div class="res-block">
+          <h3>Wie geht's weiter?</h3>
+          <div class="row">
+            <a class="btn" id="link-vwa" target="_blank" rel="noopener">Mehr zum dualen Studium an der VWA</a>
+            <a class="btn ghost" href="podcast.html">Zum Podcast</a>
+          </div>
+          <div class="row"><button class="btn quiet" id="restart" type="button">↻ Quiz neu starten</button></div>
+          <p class="note">Das Ergebnis dient nur zur Orientierung und ersetzt keine persönliche Studienberatung.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 Studiengänge -->
+    <section id="studiengaenge" class="band-plain" aria-labelledby="sg-title">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">02</span>
+        <h2 id="sg-title">Die <span class="mark">Studiengänge</span> an der BA Lüneburg</h2>
+        <p class="hand" aria-hidden="true">alle drei dual, alle mit Bachelor</p>
+      </div>
+      <ul class="fact-strip">
+        <li>Bachelor of Arts</li>
+        <li>180 Credits</li>
+        <li>3 Tage Betrieb, 2 Tage Akademie</li>
+        <li>Präsenzstudium in Lüneburg</li>
+        <li>Gruppen mit 20 bis 35 Studierenden</li>
+        <li>Start am 1. August</li>
+      </ul>
+
+      <div class="programs">
+        <article class="program" id="studiengang-m" style="--c: var(--medien)">
+          <header>
+            <span class="kicker">Passt zu: Medien/IT</span>
+            <h3>Medien- und IT-Management (B.A.)</h3>
+            <p class="lead">Du lernst, Kommunikation, Medienproduktionen und IT in Unternehmen zu managen, genau an der Schnittstelle zwischen Kreativen, Technik und Führungsebene.</p>
+          </header>
+          <div>
+            <h4>Vertiefungen</h4>
+            <ul class="vlist">
+              <li><b>Medien</b><span>Kommunikation im Unternehmen gestalten, Medienproduktionen managen und neue Ideen für die interne und externe Kommunikation umsetzen.</span></li>
+              <li><b>Informationstechnologie</b><span>IT-Infrastruktur aufbauen und verbessern, Software- und Datenbanklösungen planen, IT-Projekte steuern.</span></li>
+            </ul>
+          </div>
+          <dl>
+            <div><dt>Studientage</dt><dd>Montag und Dienstag an der Akademie</dd></div>
+            <div><dt>Was du mitbringen solltest</dt><dd>Kreativität oder erste Programmiererfahrung, Eigeninitiative und Leistungsbereitschaft</dd></div>
+          </dl>
+          <details>
+            <summary>Die 9 Lehrbereiche</summary>
+            <ol><li>Grundlagen</li><li>Mediendesign</li><li>Medien- oder IT-wissenschaftliche Grundlagen</li><li>Kommunikationsmanagement mit digitalen Medien</li><li>Fundierung Medien oder IT</li><li>Projekte</li><li>Anwendungen Medien oder IT</li><li>Wirtschaft</li><li>Recht</li></ol>
+          </details>
+          <a class="more" data-program="m" target="_blank" rel="noopener">Zum Studiengang auf ba-lueneburg.de ↗</a>
+        </article>
+
+        <article class="program" id="studiengang-b" style="--c: var(--bwl)">
+          <header>
+            <span class="kicker">Passt zu: BWL</span>
+            <h3>Betriebswirtschaftslehre (B.A.)</h3>
+            <p class="lead">Du lernst, betriebswirtschaftliche Fragen aus der Praxis selbstständig zu lösen, und bekommst eine breite Grundlage für Managementaufgaben in Unternehmen.</p>
+          </header>
+          <div>
+            <h4>Vertiefungen</h4>
+            <ul class="vlist">
+              <li><b>Marketing- und Innovationsmanagement</b><span>Marktforschung, Marketingstrategien und Innovationsprozesse, zum Beispiel für Jobs im Marketing oder in der Marktforschung.</span></li>
+              <li><b>Controlling</b><span>Ziele planen, Abweichungen analysieren und Verbesserungen anstoßen, etwa im Finanz-, Personal- oder Logistikcontrolling.</span></li>
+            </ul>
+          </div>
+          <dl>
+            <div><dt>Studientage</dt><dd>Donnerstag und Freitag an der Akademie</dd></div>
+            <div><dt>Was du mitbringen solltest</dt><dd>Interesse an betriebswirtschaftlichen Abläufen, Eigeninitiative und Leistungsbereitschaft</dd></div>
+          </dl>
+          <details>
+            <summary>Die 7 Lehrbereiche</summary>
+            <ol><li>Grundlagen</li><li>Kommunikation in Wissenschaft und Praxis</li><li>Wertschöpfung</li><li>Management</li><li>Vertiefung: Wahlfächer</li><li>Volkswirtschaftslehre</li><li>Recht</li></ol>
+          </details>
+          <a class="more" data-program="b" target="_blank" rel="noopener">Zum Studiengang auf ba-lueneburg.de ↗</a>
+        </article>
+
+        <article class="program" id="studiengang-s" style="--c: var(--sozial)">
+          <header>
+            <span class="kicker">Passt zu: Soziales</span>
+            <h3>Soziale Arbeit (B.A.)</h3>
+            <p class="lead">Du lernst und arbeitest in sozialen Einrichtungen, Ämtern, Diensten oder Projekten: betreuend und begleitend, organisierend oder bildend.</p>
+          </header>
+          <div>
+            <h4>Vertiefungen</h4>
+            <ul class="vlist">
+              <li><b>Medien- und Kulturarbeit</b><span>Medienpädagogik und Soziokultur, etwa Theater-, Spiel- und Erlebnispädagogik.</span></li>
+              <li><b>Sozialmanagement</b><span>Finanzierung, Qualitätsmanagement und Führung in sozialen Einrichtungen.</span></li>
+              <li><b>Vertiefung von Handlungskompetenzen</b><span>Krisenintervention, Gefährdungsprävention, Grundlagen der Traumapädagogik, Moderation und Mediation.</span></li>
+            </ul>
+          </div>
+          <dl>
+            <div><dt>Studientage</dt><dd>Je nach Gruppe Montag und Dienstag oder Donnerstag und Freitag</dd></div>
+            <div><dt>Was du mitbringen solltest</dt><dd>Soziales Engagement, Eigeninitiative und Leistungsbereitschaft</dd></div>
+          </dl>
+          <details>
+            <summary>Die 9 Lehrbereiche</summary>
+            <ol><li>Grundlagen</li><li>Handlungsfelder</li><li>Soziale Arbeit auf der Makroebene</li><li>Professionskompetenz</li><li>Handlungsmethoden</li><li>Projekte</li><li>Vertiefung: Wahlfächer</li><li>Psychologie</li><li>Recht</li></ol>
+          </details>
+          <a class="more" data-program="s" target="_blank" rel="noopener">Zum Studiengang auf ba-lueneburg.de ↗</a>
+        </article>
+      </div>
+
+      <ol class="apply" aria-label="So kommst du zum Studienplatz">
+        <li><b>Voraussetzung</b><span>Abitur oder Fachabitur. Alternativ eine dreijährige Ausbildung und danach mindestens drei Jahre Berufserfahrung.</span></li>
+        <li><b>Bewerbung beim Betrieb</b><span>Du bewirbst dich direkt bei einem Partnerbetrieb. Die Frist legt der Betrieb fest, einen NC der BA gibt es nicht.</span></li>
+        <li><b>Anmeldung und Start</b><span>Der Betrieb meldet dich an der Berufsakademie an. Los geht's am 1. August, in Ausnahmefällen am 1. September.</span></li>
+      </ol>
+      <p class="source">Angaben laut ba-lueneburg.de, Stand Oktober 2026. Verbindlich sind die Angaben der Berufsakademie.</p>
+    </section>
+
+    <!-- 03 Vergleich -->
+    <section id="vergleich" class="band-blue" aria-labelledby="vs-title">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">03</span>
+        <h2 id="vs-title"><span class="mark">Dual</span> vs. Vollzeit</h2>
+        <p class="hand" aria-hidden="true">kein besser oder schlechter, nur anders</p>
+      </div>
+      <div class="versus">
+        <div class="vs-head" aria-hidden="true">
+          <div class="d">Dual<small>wie Bjarne</small></div>
+          <div class="v">Vollzeit<small>wie Felix</small></div>
+        </div>
+        <ul class="vs-rows" id="vs-rows"></ul>
+      </div>
+
+      <div class="week-wrap">
+        <div>
+          <h3>Eine Woche im dualen Studium</h3>
+          <fieldset class="seg-control" id="week-pick">
+            <legend>Studiengang</legend>
+            <label><input type="radio" name="week" value="m" checked><span>Medien/IT</span></label>
+            <label><input type="radio" name="week" value="b"><span>BWL</span></label>
+            <label><input type="radio" name="week" value="s"><span>Soziale Arbeit</span></label>
+          </fieldset>
+          <ol class="week" id="week" aria-label="Wochenplan"></ol>
+          <p class="week-note" id="week-note" aria-live="polite"></p>
+        </div>
+        <div class="voll-week">
+          <h3>Und im Vollzeitstudium?</h3>
+          <p>Vorlesungen und Seminare nach Stundenplan, der je nach Hochschule und Semester anders aussieht. Dazu kommt Zeit fürs Selbststudium.</p>
+          <p>Zwischen den Semestern gibt es vorlesungsfreie Zeit. Die nutzen viele für Prüfungen, Hausarbeiten, Praktika oder Nebenjobs.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 Kampagne -->
+    <section id="kampagne" class="band-ink" aria-labelledby="kp-title">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">04</span>
+        <h2 id="kp-title">Zwei Wege, <span class="mark">zwei Studis</span></h2>
+        <p class="hand" aria-hidden="true">gedreht am 10.11. im VWA-Gemeinschaftsraum</p>
+      </div>
+      <div class="campaign">
+        <div class="person" data-person="bjarne"></div>
+        <div class="person" data-person="felix"></div>
+      </div>
+      <div class="podcast">
+        <div>
+          <span class="sticker">Podcast</span>
+          <h3>„Welches Studium passt zu mir?“</h3>
+          <p>Bjarne studiert dual, Felix in Vollzeit. Im Podcast vergleichen sie ihren Alltag: Geld, Stress, Freizeit und was sie heute anders machen würden.</p>
+        </div>
+        <div class="row">
+          <a class="btn sun" href="podcast.html">Zur Podcast-Seite <span aria-hidden="true">→</span></a>
+          <a class="btn ghost" id="link-instagram" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <p>Ein Projekt von Bjarne &amp; Felix · Podcast „Welches Studium passt zu mir?“</p>
+    <p>Das Quiz läuft komplett in deinem Browser. Es werden keine Antworten gespeichert, keine Cookies gesetzt und nichts getrackt.</p>
+  </div>
+</footer>
+
+<noscript><p class="wrap">Das Quiz braucht JavaScript. Die Infos zu Studiengängen und dem Vergleich findest du trotzdem weiter unten.</p></noscript>
+
+<!-- Fragen und Auswertung: reine Logik ohne DOM, wird von tests/kompass-logik.test.mjs geprüft. -->
+<script id="kompass-logic">
+(function () {
+  "use strict";
+
+  const SCALE_LABELS = ["trifft gar nicht zu", "trifft eher nicht zu", "teils, teils", "trifft eher zu", "trifft voll zu"];
+  // Ab einem Drittel der möglichen Ausprägung gilt die Studienform als klar (entspricht ±2 von 6 im alten Modell).
+  const FORM_THRESHOLD = 1 / 3;
+  // Liegen die zwei besten Fachrichtungen weniger als 5 Prozentpunkte auseinander, ist das Ergebnis „Allrounder“.
+  const TIE_MARGIN = 5;
+  const EPS = 1e-9;
+  const DIR_KEYS = ["m", "b", "s"];
+  const SUBS = {
+    m: { mMed: "Medien", mIT: "Informationstechnologie" },
+    b: { bMkt: "Marketing- und Innovationsmanagement", bCon: "Controlling" },
+    s: { sKul: "Medien- und Kulturarbeit", sMan: "Sozialmanagement", sHan: "Vertiefung von Handlungskompetenzen" }
+  };
+
+  /* Gewichte: d > 0 spricht für dual, d < 0 für Vollzeit. m/b/s zählen für die Fachrichtung, die Unterschlüssel für die Vertiefung.
+     Optionen mit last: true bleiben beim Mischen am Ende. */
+  const PART1 = [
+    { id: "geld", short: "Geld im Studium", type: "choice", q: "Wie wichtig ist dir eigenes Geld schon während des Studiums?", o: [
+      { t: "Sehr wichtig. Ich will ein festes Gehalt.", w: { d: 1 } },
+      { t: "Ich komme auch mit Nebenjob, BAföG oder Unterstützung klar.", w: { d: -1 } },
+      { t: "Ist mir nicht so wichtig.", w: {}, last: true } ] },
+    { id: "lernen", short: "Wie du lernst", type: "choice", q: "Wie lernst du am besten?", o: [
+      { t: "Indem ich Dinge direkt ausprobiere und anwende.", w: { d: 1 } },
+      { t: "Indem ich mich tief in Theorie und Themen einarbeite.", w: { d: -1 } },
+      { t: "Mit einer Mischung aus beidem.", w: {}, last: true } ] },
+    { id: "freiraum", short: "Freizeit und Flexibilität", type: "choice", q: "Wie viel Freizeit und Flexibilität brauchst du?", o: [
+      { t: "Ich verzichte auf lange Ferien, wenn es sich später lohnt.", w: { d: 1 } },
+      { t: "Ich brauche Semesterferien und Freiraum für Reisen, Hobbys oder ein Auslandssemester.", w: { d: -1 } },
+      { t: "Ein bisschen Freiraum reicht mir.", w: {}, last: true } ] },
+    { id: "woche", short: "Volle Wochen", type: "choice", q: "Arbeit, Vorlesung und Lernen in einer Woche: Wie klingt das für dich?", o: [
+      { t: "Machbar. Ich mag volle Wochen mit klarer Struktur.", w: { d: 1 } },
+      { t: "Zu viel. Ich konzentriere mich lieber auf eine Sache.", w: { d: -1 } },
+      { t: "Kommt drauf an, wie stressig es wird.", w: {}, last: true } ] },
+    { id: "richtung", short: "Berufliche Richtung", type: "choice", q: "Weißt du schon, in welche Richtung es beruflich gehen soll?", o: [
+      { t: "Ziemlich genau. Ich will direkt einsteigen.", w: { d: 1 } },
+      { t: "Noch nicht. Ich will mich erst ausprobieren.", w: { d: -1 } },
+      { t: "Grob, aber ich bin mir nicht sicher.", w: {}, last: true } ] },
+    { id: "nachher", short: "Nach dem Studium", type: "choice", q: "Was ist dir nach dem Studium wichtiger?", o: [
+      { t: "Berufserfahrung und gute Chancen auf eine Übernahme.", w: { d: 1 } },
+      { t: "Breites Wissen und möglichst viele Wege offen halten.", w: { d: -1 } },
+      { t: "Beides gleich.", w: {}, last: true } ] },
+    { id: "dreizwei", short: "3 Tage Betrieb, 2 Tage Akademie", type: "scale",
+      q: "„Drei Tage pro Woche im Betrieb, zwei Tage in der Vorlesung: Das kann ich mir für mich gut vorstellen.“", w: { d: 1 } },
+    { id: "wichtig", short: "Was dein Studium bieten soll", type: "multi", max: 3, factor: 1 / 3,
+      q: "Was soll dein Studium dir bieten?", o: [
+      { t: "Ein festes Gehalt", w: { d: 1 } },
+      { t: "Lange Semesterferien", w: { d: -1 } },
+      { t: "Ein Team und Kolleg:innen im Betrieb", w: { d: 1 } },
+      { t: "Ein Auslandssemester", w: { d: -1 } },
+      { t: "Einen klaren Wochenplan", w: { d: 1 } },
+      { t: "Zeit, um mich auszuprobieren", w: { d: -1 } } ] }
+  ];
+
+  const PART2 = [
+    { id: "gruppe", short: "Gruppenprojekt", type: "choice", q: "Im Gruppenprojekt übernimmst du am liebsten …", o: [
+      { t: "Design, Technik oder die Präsentation", w: { m: 1 } },
+      { t: "Planung und Zeitplan", w: { b: 1 } },
+      { t: "Dafür sorgen, dass das Team gut zusammenarbeitet", w: { s: 1, sMan: 1 } } ] },
+    { id: "satz", short: "Dein Satz", type: "choice", q: "Welcher Satz passt am besten zu dir?", o: [
+      { t: "„Ich will wissen, wie Dinge funktionieren, und sie selbst bauen.“", w: { m: 1, mIT: 1 } },
+      { t: "„Ich will verstehen, wie Unternehmen erfolgreich werden.“", w: { b: 1, bMkt: 1 } },
+      { t: "„Ich will Menschen weiterhelfen.“", w: { s: 1, sHan: 1 } } ] },
+    { id: "faecher", short: "Schulfächer", type: "choice", q: "Welche Schulfächer mochtest du am meisten?", o: [
+      { t: "Informatik, Kunst, Medien", w: { m: 1 } },
+      { t: "Wirtschaft, Mathe", w: { b: 1 } },
+      { t: "Pädagogik, Ethik, Sozialkunde", w: { s: 1, sKul: 1 } } ] },
+    { id: "nachmittag", short: "Freier Nachmittag", type: "choice", q: "Dein freier Nachmittag sieht so aus …", o: [
+      { t: "Videos schneiden oder neue Apps testen", w: { m: 1, mMed: 1 } },
+      { t: "Nebenjob, Finanzen oder Ideen fürs eigene Business", w: { b: 1, bMkt: 1 } },
+      { t: "Ehrenamt oder für Freunde da sein", w: { s: 1 } } ] },
+    { id: "arbeitsort", short: "Arbeitsort", type: "choice", q: "Wo würdest du am liebsten arbeiten?", o: [
+      { t: "In einer Agentur oder einem Tech-Team", w: { m: 1 } },
+      { t: "In einem Büro mit Verantwortung und Zahlen", w: { b: 1, bCon: 1 } },
+      { t: "In einer Einrichtung, nah am Menschen", w: { s: 1 } } ] },
+    { id: "problem", short: "Problem lösen", type: "choice", q: "Welches Problem würdest du am liebsten lösen?", o: [
+      { t: "„Unsere Website und Social Media sind total veraltet.“", w: { m: 1, mMed: 1 } },
+      { t: "„Die Firma macht seit Monaten Verluste.“", w: { b: 1, bCon: 1 } },
+      { t: "„Die Jugendlichen im Viertel brauchen Unterstützung.“", w: { s: 1, sKul: 1 } } ] },
+    { id: "freunde", short: "Wofür Freunde dich fragen", type: "choice", q: "Deine Freunde fragen dich am ehesten …", o: [
+      { t: "bei Technik-Problemen", w: { m: 1, mIT: 1 } },
+      { t: "bei Geld- und Entscheidungsfragen", w: { b: 1 } },
+      { t: "bei persönlichen Problemen", w: { s: 1, sHan: 1 } } ] },
+    { id: "praxis", short: "Praxisprojekt", type: "choice", q: "Im Praxisprojekt würdest du am liebsten …", o: [
+      { t: "das Netzwerk und die Geräte für ein neues Büro planen", w: { m: 1, mIT: 1 } },
+      { t: "eine Marktanalyse für ein neues Produkt erstellen", w: { b: 1, bMkt: 1 } },
+      { t: "die Abläufe in einer sozialen Einrichtung neu organisieren", w: { s: 1, sMan: 1 } } ] },
+    { id: "reihenfolge", short: "Deine Reihenfolge", type: "rank", q: "Welche Aufgabe würdest du am liebsten übernehmen? Bring sie in deine Reihenfolge.", o: [
+      { t: "Ein Video für den Firmenkanal drehen und schneiden", w: { m: 1, mMed: 1 } },
+      { t: "Herausfinden, warum ein Projekt mehr kostet als geplant", w: { b: 1, bCon: 1 } },
+      { t: "Mit Kindern ein Theaterstück auf die Beine stellen", w: { s: 1, sKul: 1 } } ] },
+    { id: "themen", short: "Themen zum Vertiefen", type: "multi", max: 3, factor: 0.5,
+      q: "Welche Themen würdest du im Studium gern vertiefen?", o: [
+      { t: "Programmieren und Datenbanken", w: { m: 1, mIT: 1 } },
+      { t: "Design, Video und Social Media", w: { m: 1, mMed: 1 } },
+      { t: "Marketing und Marktforschung", w: { b: 1, bMkt: 1 } },
+      { t: "Finanzen und Controlling", w: { b: 1, bCon: 1 } },
+      { t: "Beratung und Krisenhilfe", w: { s: 1, sHan: 1 } },
+      { t: "Einrichtungen leiten und Teams führen", w: { s: 1, sMan: 1 } } ] }
+  ];
+
+  const QUESTIONS = [...PART1.map(q => ({ ...q, part: 1 })), ...PART2.map(q => ({ ...q, part: 2 }))];
+
+  const isIndex = (q, i) => Number.isInteger(i) && i >= 0 && i < q.o.length;
+  const isUniqueIndexList = (q, a) => Array.isArray(a) && new Set(a).size === a.length && a.every(i => isIndex(q, i));
+
+  function isAnswered(q, a) {
+    switch (q.type) {
+      case "choice": return isIndex(q, a);
+      case "scale": return Number.isInteger(a) && a >= 0 && a < SCALE_LABELS.length;
+      case "multi": return isUniqueIndexList(q, a) && a.length >= 1 && a.length <= q.max;
+      case "rank": return isUniqueIndexList(q, a) && a.length === q.o.length;
+      default: throw new Error(`Unbekannter Fragetyp: ${q.type}`);
+    }
+  }
+
+  function contribution(q, a) {
+    const out = {};
+    const add = (w, f) => { for (const k in w) out[k] = (out[k] || 0) + w[k] * f; };
+    if (!isAnswered(q, a)) return out;
+    if (q.type === "choice") add(q.o[a].w, 1);
+    else if (q.type === "scale") { const mid = (SCALE_LABELS.length - 1) / 2; add(q.w, (a - mid) / mid); }
+    else if (q.type === "multi") a.forEach(i => add(q.o[i].w, q.factor));
+    else if (q.type === "rank") { const n = q.o.length; a.forEach((i, pos) => add(q.o[i].w, (n - 1 - pos) / (n - 1))); }
+    return out;
+  }
+
+  function allAnswers(q) {
+    const idx = q.type === "scale" ? [] : q.o.map((_, i) => i);
+    switch (q.type) {
+      case "choice": return idx;
+      case "scale": return SCALE_LABELS.map((_, i) => i);
+      case "multi": {
+        const res = [];
+        const pick = (start, acc) => {
+          if (acc.length) res.push(acc.slice());
+          if (acc.length === q.max) return;
+          for (let i = start; i < idx.length; i++) { acc.push(i); pick(i + 1, acc); acc.pop(); }
+        };
+        pick(0, []);
+        return res;
+      }
+      case "rank": {
+        const res = [];
+        const perm = (rest, acc) => {
+          if (!rest.length) { res.push(acc); return; }
+          rest.forEach((x, j) => perm([...rest.slice(0, j), ...rest.slice(j + 1)], [...acc, x]));
+        };
+        perm(idx, []);
+        return res;
+      }
+      default: throw new Error(`Unbekannter Fragetyp: ${q.type}`);
+    }
+  }
+
+  function extremes(q, key) {
+    let min = Infinity, max = -Infinity;
+    for (const a of allAnswers(q)) {
+      const v = contribution(q, a)[key] || 0;
+      if (v < min) min = v;
+      if (v > max) max = v;
+    }
+    return { min, max };
+  }
+
+  function evaluateForm(questions, idx, contribs) {
+    let score = 0, range = 0;
+    for (const i of idx) {
+      score += contribs[i].d || 0;
+      const { min, max } = extremes(questions[i], "d");
+      range += Math.max(Math.abs(min), Math.abs(max));
+    }
+    const norm = range ? score / range : 0;
+    const key = norm >= FORM_THRESHOLD - EPS ? "dual" : norm <= -FORM_THRESHOLD + EPS ? "voll" : "both";
+    const tendency = key !== "both" || Math.abs(norm) < EPS ? null : norm > 0 ? "dual" : "voll";
+
+    const sign = key === "dual" ? 1 : key === "voll" ? -1 : 0;
+    const all = idx.map(i => ({ i, value: contribs[i].d || 0 }));
+    let drivers;
+    if (sign) {
+      drivers = all.filter(d => d.value * sign > EPS).sort((a, b) => (b.value - a.value) * sign).slice(0, 3);
+    } else {
+      const pos = all.filter(d => d.value > EPS).sort((a, b) => b.value - a.value)[0];
+      const neg = all.filter(d => d.value < -EPS).sort((a, b) => a.value - b.value)[0];
+      drivers = [pos, neg].filter(Boolean);
+    }
+    return { score, range, norm, key, tendency, dualPct: Math.round((norm + 1) / 2 * 100), drivers };
+  }
+
+  function evaluateDirection(questions, idx, contribs) {
+    const raw = {}, max = {}, pct = {};
+    for (const k of DIR_KEYS) {
+      raw[k] = 0; max[k] = 0;
+      for (const i of idx) { raw[k] += contribs[i][k] || 0; max[k] += extremes(questions[i], k).max; }
+      pct[k] = max[k] ? raw[k] / max[k] * 100 : 0;
+    }
+    const ranked = DIR_KEYS.slice().sort((a, b) => pct[b] - pct[a]);
+    const tie = pct[ranked[0]] - pct[ranked[1]] < TIE_MARGIN - EPS;
+    const top = tie ? ranked.slice(0, 2) : ranked.slice(0, 1);
+
+    const subs = {};
+    for (const k of top) {
+      const keys = Object.keys(SUBS[k]);
+      const vals = keys.map(s => idx.reduce((sum, i) => sum + (contribs[i][s] || 0), 0));
+      const best = Math.max(...vals);
+      subs[k] = best > EPS ? keys.filter((_, j) => vals[j] >= best - EPS) : [];
+    }
+
+    const drivers = idx
+      .map(i => ({ i, value: top.reduce((sum, k) => sum + (contribs[i][k] || 0), 0) }))
+      .filter(d => d.value > EPS)
+      .sort((a, b) => b.value - a.value)
+      .slice(0, 3);
+    return { raw, max, pct, ranked, tie, top, subs, drivers };
+  }
+
+  function evaluate(questions, answers) {
+    const contribs = questions.map((q, i) => contribution(q, answers[i]));
+    const idx1 = [], idx2 = [];
+    questions.forEach((q, i) => (q.part === 1 ? idx1 : idx2).push(i));
+    return { form: evaluateForm(questions, idx1, contribs), dir: evaluateDirection(questions, idx2, contribs) };
+  }
+
+  function shuffle(list, random) {
+    const r = list.slice();
+    for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; }
+    return r;
+  }
+
+  function orderFor(q, random = Math.random) {
+    if (q.type === "scale") return null;
+    const idx = q.o.map((_, i) => i);
+    return [...shuffle(idx.filter(i => !q.o[i].last), random), ...idx.filter(i => q.o[i].last)];
+  }
+
+  function answerLabel(q, a) {
+    if (!isAnswered(q, a)) return "";
+    switch (q.type) {
+      case "choice": return q.o[a].t;
+      case "scale": return SCALE_LABELS[a];
+      case "multi": return a.map(i => q.o[i].t).join(" · ");
+      case "rank": return `Platz 1: ${q.o[a[0]].t}`;
+    }
+  }
+
+  globalThis.Kompass = {
+    SCALE_LABELS, FORM_THRESHOLD, TIE_MARGIN, DIR_KEYS, SUBS, PART1, PART2, QUESTIONS,
+    isAnswered, contribution, allAnswers, extremes, evaluate, orderFor, answerLabel
+  };
+})();
+</script>
+
+<script src="site.js"></script>
+<script>
+// Gemeinsame Einstellungen (LINKS, PODCAST, PHOTOS, QUOTES) stehen in site.js.
+const PROGRAM_LINKS = {
+  m: "https://ba-lueneburg.de/studienangebote/medien-und-it-management/",
+  b: "https://ba-lueneburg.de/studienangebote/betriebswirtschaft/",
+  s: "https://ba-lueneburg.de/studienangebote/soziale-arbeit/"
+};
+const FORMS = {
+  dual: {
+    title: "Duales Studium",
+    text: "Du willst Praxis, eigenes Geld und einen schnellen Einstieg in den Job, und eine volle Woche schreckt dich nicht ab. Ja, es ist der härtere Weg. Dafür startest du mit Berufserfahrung, wenn andere noch Bewerbungen schreiben.",
+    link: "Mehr zum dualen Studium an der VWA",
+    people: ["bjarne"]
+  },
+  voll: {
+    title: "Vollzeitstudium",
+    text: "Du brauchst Freiraum, willst dich tief in Themen einarbeiten und dich erst ausprobieren. Ein Vollzeitstudium gibt dir Zeit für Theorie, Semesterferien und vielleicht ein Auslandssemester. Praxis holst du dir über Praktika und Nebenjobs.",
+    link: "Duales Studium an der VWA trotzdem ansehen",
+    people: ["felix"]
+  },
+  both: {
+    title: "Beides möglich",
+    text: "Beide Wege passen zu dir. Entscheidend ist, was dir wichtiger ist: Gehalt und Praxis oder Freiraum und Theorie. Im Podcast vergleichen Bjarne und Felix genau das aus ihrem Alltag.",
+    link: "Mehr zum dualen Studium an der VWA",
+    people: ["bjarne", "felix"]
+  }
+};
+
+const DIRS = {
+  m: { name: "Medien/IT", color: "--medien", angle: 0, program: "Medien- und IT-Management (B.A.)",
+       text: "Du bist kreativ, technikaffin und baust gern Dinge selbst, von der Website bis zur Kampagne.",
+       tags: ["Kreativ", "Technikaffin", "Lösungsorientiert"] },
+  b: { name: "BWL", color: "--bwl", angle: 120, program: "Betriebswirtschaftslehre (B.A.)",
+       text: "Du denkst strategisch und behältst den Überblick. Dich interessiert, wie Unternehmen funktionieren und erfolgreich werden.",
+       tags: ["Strategisch", "Organisiert", "Zahlenstark"] },
+  s: { name: "Soziales", color: "--sozial", angle: 240, program: "Soziale Arbeit (B.A.)",
+       text: "Du bist empathisch und willst etwas bewegen. Du arbeitest am liebsten mit und für Menschen.",
+       tags: ["Empathisch", "Kommunikativ", "Engagiert"] }
+};
+
+const FORM_ADD = {
+  dual: "Im dualen Studium setzt du das vom ersten Semester an im Unternehmen um.",
+  voll: "Im Vollzeitstudium hast du Zeit, dich tief einzuarbeiten, und sammelst Praxis über Praktika.",
+  both: "Ob dual oder Vollzeit: In dieser Richtung kannst du deine Stärken ausspielen."
+};
+
+const VERSUS = [
+  { topic: "Geld", dual: "Vergütung vom Partnerbetrieb, geregelt im Studien- und Ausbildungsvertrag.", voll: "Kein Gehalt aus dem Studium. Finanzierung über Nebenjob, BAföG oder Unterstützung." },
+  { topic: "Deine Woche", dual: "Drei Tage im Betrieb, zwei Tage an der Akademie.", voll: "Vorlesungen und Seminare nach Stundenplan, dazu Selbststudium." },
+  { topic: "Freizeit", dual: "Urlaubstage laut Vertrag statt Semesterferien.", voll: "Vorlesungsfreie Zeit zwischen den Semestern, oft mit Prüfungen und Hausarbeiten." },
+  { topic: "Praxis", dual: "Vom ersten Semester an im Unternehmen.", voll: "Über Praktika, Werkstudentenjobs oder Projekte." },
+  { topic: "Theorie", dual: "Kompakt an zwei Tagen und direkt mit der Praxis verknüpft.", voll: "Viel Zeit, um tief in Themen einzusteigen." },
+  { topic: "Bewerbung", dual: "Beim Partnerbetrieb. Die Frist legt der Betrieb fest.", voll: "Bei der Hochschule, oft mit NC und festen Fristen." },
+  { topic: "Nach dem Abschluss", dual: "Berufserfahrung im Lebenslauf und oft gute Chancen auf Übernahme.", voll: "Viele Wege offen, zum Beispiel Master oder Berufseinstieg." }
+];
+
+const WEEK_DAYS = ["Mo", "Di", "Mi", "Do", "Fr"];
+const WEEK = {
+  m: { academy: [0, 1], note: "Medien- und IT-Management: Montag und Dienstag an der Akademie, Mittwoch bis Freitag im Betrieb." },
+  b: { academy: [3, 4], note: "BWL: Montag bis Mittwoch im Betrieb, Donnerstag und Freitag an der Akademie." },
+  s: { academy: [0, 1], note: "Soziale Arbeit: je nach Gruppe Montag und Dienstag oder Donnerstag und Freitag an der Akademie." }
+};
+
+const HINTS = {
+  choice: () => "eine Antwort",
+  scale: () => "wie sehr stimmt das?",
+  multi: q => `bis zu ${q.max} Antworten`,
+  rank: () => "in deiner Reihenfolge antippen"
+};
+
+/* ---------- Ablauf ---------- */
+const { QUESTIONS, SCALE_LABELS, SUBS, evaluate, orderFor, isAnswered, answerLabel, contribution } = window.Kompass;
+const TOTAL = QUESTIONS.length;
+const P1 = QUESTIONS.filter(q => q.part === 1).length;
+const views = { start: $("view-start"), quiz: $("view-quiz"), break: $("view-break"), result: $("view-result") };
+let order = [], answers = [], current = 0, locked = false;
+
+function show(name, focusId) {
+  for (const [k, v] of Object.entries(views)) {
+    v.hidden = k !== name;
+    if (k === name) { v.classList.remove("fade"); void v.offsetWidth; v.classList.add("fade"); }
+  }
+  const zone = $("quiz");
+  if (zone.getBoundingClientRect().top < 0) zone.scrollIntoView({ behavior: reduceMotion() ? "auto" : "smooth", block: "start" });
+  if (focusId) $(focusId).focus({ preventScroll: true });
+}
+
+function drawCompass(svg) {
+  const NS = "http://www.w3.org/2000/svg";
+  const s = (tag, attrs) => { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); return n; };
+  svg.innerHTML = "";
+  svg.appendChild(s("circle", { class: "ring", cx: 100, cy: 100, r: 92 }));
+  svg.appendChild(s("circle", { class: "ring2", cx: 100, cy: 100, r: 48 }));
+  for (let i = 0; i < 72; i++) {
+    const a = (i * 5) * Math.PI / 180, r2 = i % 6 === 0 ? 81 : 87;
+    svg.appendChild(s("line", { class: "tick",
+      x1: 100 + 92 * Math.sin(a), y1: 100 - 92 * Math.cos(a),
+      x2: 100 + r2 * Math.sin(a), y2: 100 - r2 * Math.cos(a) }));
+  }
+  for (const d of Object.values(DIRS)) {
+    const a = d.angle * Math.PI / 180;
+    svg.appendChild(s("circle", { cx: 100 + 92 * Math.sin(a), cy: 100 - 92 * Math.cos(a), r: 8, fill: `var(${d.color})` }));
+    const t = s("text", { class: "label", x: 100 + 64 * Math.sin(a), y: 100 - 64 * Math.cos(a) + 4, "text-anchor": "middle" });
+    t.textContent = d.name;
+    svg.appendChild(t);
+  }
+  const g = s("g", { class: "needle" });
+  g.appendChild(s("polygon", { class: "tip", points: "100,26 108,100 92,100" }));
+  g.appendChild(s("polygon", { class: "tail", points: "92,100 108,100 100,142" }));
+  svg.appendChild(g);
+  svg.appendChild(s("circle", { class: "hub", cx: 100, cy: 100, r: 6 }));
+  return g;
+}
+drawCompass($("compass-start"));
+const resultNeedle = drawCompass($("compass-result"));
+
+/* Start-Fakten aus den Daten, damit Fragenzahl und Typen nie veralten */
+(function renderStartFacts() {
+  const types = new Set(QUESTIONS.map(q => q.type)).size;
+  [`${TOTAL} Fragen`, "2 Teile", `${types} Fragetypen`, "anonym, nichts wird gespeichert"].forEach(t => $("start-facts").appendChild(el("li", {}, t)));
+})();
+
+/* Fortschritt in Segmenten, mit Lücke zwischen Teil 1 und Teil 2 */
+const segBox = $("segs");
+segBox.setAttribute("aria-valuemax", TOTAL);
+const segEls = QUESTIONS.map((_, i) => {
+  if (i === P1) segBox.appendChild(el("span", { class: "gap" }));
+  return segBox.appendChild(el("span", { class: "seg" }));
+});
+/* Halbkreis im Zwischenschritt zeigt den echten Anteil von Teil 1 */
+(function () {
+  const c = 2 * Math.PI * 34, done = c * P1 / TOTAL;
+  $("half-arc").setAttribute("stroke-dasharray", `${done} ${c}`);
+})();
+
+function renderQuestion(focus = true) {
+  const q = QUESTIONS[current];
+  $("q-part").textContent = q.part === 1 ? "Teil 1 · Studienform" : "Teil 2 · Fachrichtung";
+  $("q-count").textContent = `${current + 1} / ${TOTAL}`;
+  $("q-num").textContent = `Frage ${String(current + 1).padStart(2, "0")}`;
+  $("q-hint").textContent = HINTS[q.type](q);
+  segEls.forEach((s, i) => { s.className = "seg" + (i < current ? " done" : i === current ? " now" : ""); });
+  segBox.setAttribute("aria-valuenow", current + 1);
+  segBox.setAttribute("aria-valuetext", `Frage ${current + 1} von ${TOTAL}`);
+  $("q-text").textContent = q.q;
+  $("q-status").textContent = "";
+  const box = $("q-opts");
+  box.innerHTML = "";
+  RENDER[q.type](q, box);
+  $("q-next").hidden = !(q.type === "multi" || q.type === "rank");
+  updateNext();
+  $("back").hidden = current === 0;
+  locked = false;
+  if (focus) $("q-text").focus({ preventScroll: true });
+}
+
+function updateNext() {
+  $("q-next").disabled = !isAnswered(QUESTIONS[current], answers[current]);
+}
+
+function optButton(key, text) {
+  const b = el("button", { type: "button", class: "opt" });
+  b.append(el("span", { class: "key", "aria-hidden": "true" }, key), el("span", { class: "txt" }, text));
+  return b;
+}
+
+function markPressed(btn) {
+  $("q-opts").querySelectorAll("[aria-pressed]").forEach(b => b.setAttribute("aria-pressed", b === btn ? "true" : "false"));
+}
+
+const RENDER = {
+  choice(q, box) {
+    order[current].forEach((oi, pos) => {
+      const b = optButton("ABCDEF"[pos], q.o[oi].t);
+      b.setAttribute("aria-pressed", answers[current] === oi ? "true" : "false");
+      b.addEventListener("click", () => choose(oi, b));
+      box.appendChild(b);
+    });
+  },
+  scale(q, box) {
+    const row = el("div", { class: "scale-row" });
+    SCALE_LABELS.forEach((label, step) => {
+      const b = el("button", { type: "button", class: "scale-step", "aria-label": `${step + 1} von ${SCALE_LABELS.length}: ${label}` }, String(step + 1));
+      b.setAttribute("aria-pressed", answers[current] === step ? "true" : "false");
+      b.addEventListener("click", () => choose(step, b));
+      row.appendChild(b);
+    });
+    const ends = el("div", { class: "scale-ends", "aria-hidden": "true" });
+    ends.append(el("span", {}, SCALE_LABELS[0]), el("span", {}, SCALE_LABELS[SCALE_LABELS.length - 1]));
+    box.append(row, ends);
+  },
+  multi(q, box) {
+    if (!Array.isArray(answers[current])) answers[current] = [];
+    const picked = answers[current];
+    order[current].forEach(oi => {
+      const label = el("label", { class: "opt check" });
+      const input = el("input", { type: "checkbox" });
+      input.checked = picked.includes(oi);
+      input.addEventListener("change", () => {
+        const at = picked.indexOf(oi);
+        if (input.checked && at < 0) picked.push(oi);
+        if (!input.checked && at >= 0) picked.splice(at, 1);
+        syncMulti(q, box, picked);
+      });
+      label.append(input, el("span", { class: "txt" }, q.o[oi].t));
+      box.appendChild(label);
+    });
+    syncMulti(q, box, picked, true);
+  },
+  rank(q, box) {
+    if (!Array.isArray(answers[current])) answers[current] = [];
+    const ranked = answers[current];
+    order[current].forEach(oi => {
+      const b = optButton("–", q.o[oi].t);
+      b.classList.add("rank");
+      b.dataset.oi = oi;
+      b.addEventListener("click", () => toggleRank(q, box, ranked, oi));
+      box.appendChild(b);
+    });
+    syncRank(q, box, ranked, true);
+  }
+};
+
+function syncMulti(q, box, picked, silent) {
+  const full = picked.length >= q.max;
+  box.querySelectorAll("input").forEach(inp => { inp.disabled = full && !inp.checked; });
+  if (!silent || picked.length) $("q-status").textContent = `${picked.length} von ${q.max} gewählt${full ? ". Mehr geht nicht, entferne erst eine Antwort." : ""}`;
+  updateNext();
+}
+
+function toggleRank(q, box, ranked, oi) {
+  const at = ranked.indexOf(oi);
+  if (at >= 0) ranked.splice(at);
+  else {
+    ranked.push(oi);
+    // Der letzte Platz ergibt sich von selbst.
+    if (ranked.length === q.o.length - 1) ranked.push(q.o.map((_, j) => j).find(j => !ranked.includes(j)));
+  }
+  syncRank(q, box, ranked);
+}
+
+function syncRank(q, box, ranked, silent) {
+  box.querySelectorAll(".rank").forEach(b => {
+    const pos = ranked.indexOf(Number(b.dataset.oi));
+    b.querySelector(".key").textContent = pos >= 0 ? String(pos + 1) : "–";
+    b.setAttribute("aria-pressed", pos >= 0 ? "true" : "false");
+    b.setAttribute("aria-label", `${q.o[b.dataset.oi].t}. ${pos >= 0 ? `Platz ${pos + 1}` : "Noch ohne Platz"}`);
+  });
+  const done = ranked.length === q.o.length;
+  if (!silent || ranked.length) {
+    $("q-status").textContent = done
+      ? "Reihenfolge steht. Nochmal antippen setzt ab dort zurück."
+      : `Als Nächstes: Platz ${ranked.length + 1}`;
+  }
+  updateNext();
+}
+
+function choose(value, btn) {
+  if (locked) return;
+  locked = true;
+  answers[current] = value;
+  markPressed(btn);
+  setTimeout(advance, reduceMotion() ? 0 : 280);
+}
+
+function advance() {
+  if (!isAnswered(QUESTIONS[current], answers[current])) { locked = false; return; }
+  if (current === P1 - 1) { locked = false; show("break", "break-title"); return; }
+  if (current < TOTAL - 1) { current++; renderQuestion(); }
+  else showResult();
+}
+
+/* ---------- Ergebnis ---------- */
+function formTitle(form) {
+  if (form.key !== "both") return FORMS[form.key].title;
+  if (form.tendency === "dual") return "Beides möglich, mit Tendenz zum dualen Studium";
+  if (form.tendency === "voll") return "Beides möglich, mit Tendenz zum Vollzeitstudium";
+  return FORMS.both.title;
+}
+
+function renderDrivers(list, drivers, describe) {
+  list.innerHTML = "";
+  if (!drivers.length) { list.appendChild(el("li", {}, "Deine Antworten waren ausgeglichen, keine sticht heraus.")); return; }
+  for (const d of drivers) {
+    const q = QUESTIONS[d.i];
+    const li = el("li");
+    const body = el("div");
+    const label = answerLabel(q, answers[d.i]);
+    const quoted = label.startsWith("„") ? label : `„${label}“`;
+    body.append(el("b", {}, `${q.short}: `), document.createTextNode(quoted), el("span", { class: "push" }, describe(d)));
+    li.appendChild(body);
+    list.appendChild(li);
+  }
+}
+
+function showResult() {
+  const { form, dir } = evaluate(QUESTIONS, answers);
+
+  /* Teil 1 */
+  $("f-title").textContent = formTitle(form);
+  $("f-text").textContent = FORMS[form.key].text;
+  $("f-pct").textContent = `${form.dualPct} % dual · ${100 - form.dualPct} % Vollzeit`;
+  const marker = $("f-marker");
+  marker.style.left = "50%";
+  renderDrivers($("f-drivers"), form.drivers, d => d.value > 0 ? "spricht für das duale Studium" : "spricht für das Vollzeitstudium");
+  const people = $("f-people");
+  people.innerHTML = "";
+  people.classList.toggle("two", FORMS[form.key].people.length > 1);
+  FORMS[form.key].people.forEach(k => people.appendChild(personFigure(k)));
+
+  /* Teil 2 */
+  const [first, second] = dir.top;
+  let angle, dirTitle;
+  if (dir.tie) {
+    const a1 = DIRS[first].angle * Math.PI / 180, a2 = DIRS[second].angle * Math.PI / 180;
+    angle = Math.atan2(Math.sin(a1) + Math.sin(a2), Math.cos(a1) + Math.cos(a2)) * 180 / Math.PI;
+    dirTitle = `${DIRS[first].name} & ${DIRS[second].name}`;
+    $("d-title").textContent = `Allrounder: ${dirTitle}`;
+    $("d-text").textContent = `Gleich zwei Richtungen passen zu dir. Du bringst Stärken aus ${DIRS[first].name} und ${DIRS[second].name} mit. ${FORM_ADD[form.key]}`;
+    renderTags([...DIRS[first].tags.slice(0, 2).map(t => [t, first]), ...DIRS[second].tags.slice(0, 2).map(t => [t, second])]);
+  } else {
+    angle = DIRS[first].angle;
+    dirTitle = DIRS[first].name;
+    $("d-title").textContent = DIRS[first].name;
+    $("d-text").textContent = `${DIRS[first].text} ${FORM_ADD[form.key]}`;
+    renderTags(DIRS[first].tags.map(t => [t, first]));
+  }
+
+  const recs = $("d-recs");
+  recs.innerHTML = "";
+  for (const k of dir.top) {
+    const rec = el("div", { class: "rec" });
+    rec.style.setProperty("--c", `var(${DIRS[k].color})`);
+    rec.appendChild(el("a", { href: `#studiengang-${k}` }, `Studiengang: ${DIRS[k].program}`));
+    const subs = dir.subs[k].map(s => SUBS[k][s]);
+    if (subs.length) rec.appendChild(el("span", {}, `Tipp für deine Vertiefung: ${subs.join(" oder ")}`));
+    recs.appendChild(rec);
+  }
+
+  const box = $("d-scores");
+  box.innerHTML = "";
+  ["m", "b", "s"].forEach(k => {
+    const row = el("div", { class: "score" });
+    row.style.setProperty("--c", `var(${DIRS[k].color})`);
+    const bar = el("div", { class: "bar", "aria-hidden": "true" });
+    bar.appendChild(el("i"));
+    row.append(el("span", { class: "name" }, DIRS[k].name), bar, el("span", { class: "val" }, `${Math.round(dir.pct[k])} %`));
+    box.appendChild(row);
+  });
+
+  renderDrivers($("d-drivers"), dir.drivers, d => {
+    const c = contribution(QUESTIONS[d.i], answers[d.i]);
+    const k = dir.top.slice().sort((a, b) => (c[b] || 0) - (c[a] || 0))[0];
+    return `zählt für ${DIRS[k].name}`;
+  });
+
+  /* Ergebnis-Ticket */
+  $("r-l1").textContent = form.key === "dual" ? "Duales Studium" : form.key === "voll" ? "Vollzeitstudium" : "Dual oder Vollzeit";
+  $("r-l2").textContent = dirTitle;
+  setupLink("link-vwa", LINKS.vwa, FORMS[form.key].link);
+
+  resultNeedle.style.transform = "rotate(0deg)";
+  show("result", "r-title");
+  const target = angle < 0 ? angle + 360 : angle;
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    resultNeedle.style.transform = `rotate(${target + 360}deg)`;
+    marker.style.left = `${2 + form.dualPct * 0.96}%`;
+    box.querySelectorAll(".score").forEach((row, i) => {
+      row.querySelector("i").style.width = `${Math.max(0, dir.pct[["m", "b", "s"][i]])}%`;
+    });
+  }));
+}
+
+function renderTags(list) {
+  const box = $("d-tags");
+  box.innerHTML = "";
+  list.forEach(([t, k]) => {
+    const s = el("span", { class: "tag" }, t);
+    s.style.setProperty("--c", `var(${DIRS[k].color})`);
+    box.appendChild(s);
+  });
+}
+
+/* ---------- Seitenbereiche ---------- */
+function renderVersus() {
+  const list = $("vs-rows");
+  for (const r of VERSUS) {
+    const li = el("li", { class: "vs-row" });
+    const cells = el("div");
+    const d = el("p"), v = el("p");
+    d.append(el("span", { class: "sr-only" }, "Dual: "), document.createTextNode(r.dual));
+    v.append(el("span", { class: "sr-only" }, "Vollzeit: "), document.createTextNode(r.voll));
+    cells.append(d, v);
+    li.append(el("h3", {}, r.topic), cells);
+    list.appendChild(li);
+  }
+}
+
+function renderWeek(k) {
+  const week = $("week");
+  week.innerHTML = "";
+  WEEK_DAYS.forEach((day, i) => {
+    const academy = WEEK[k].academy.includes(i);
+    const li = el("li", { class: academy ? "akademie" : "betrieb" });
+    li.append(el("b", {}, day), el("span", { class: "slot" }, academy ? "Akademie" : "Betrieb"));
+    week.appendChild(li);
+  });
+  $("week-note").textContent = WEEK[k].note;
+}
+
+function start() {
+  order = QUESTIONS.map(q => orderFor(q));
+  answers = [];
+  current = 0;
+  show("quiz");
+  renderQuestion();
+}
+
+renderVersus();
+renderWeek("m");
+renderPeople();
+document.querySelectorAll("[data-program]").forEach(a => { a.href = PROGRAM_LINKS[a.dataset.program]; });
+setupLink("link-instagram", LINKS.instagram, "Instagram");
+
+$("start").addEventListener("click", start);
+$("restart").addEventListener("click", () => show("start", "start-title"));
+$("back").addEventListener("click", () => { if (current > 0) { current--; renderQuestion(); } });
+$("q-next").addEventListener("click", advance);
+$("to-part2").addEventListener("click", () => { current = P1; show("quiz"); renderQuestion(); });
+$("break-back").addEventListener("click", () => { current = P1 - 1; show("quiz"); renderQuestion(); });
+$("week-pick").addEventListener("change", e => renderWeek(e.target.value));
+// One-Pager: Der Menüpunkt des Abschnitts in der Bildschirmmitte wird markiert.
+const navLinks = [...document.querySelectorAll(".site-nav a")];
+const sectionObserver = new IntersectionObserver(entries => {
+  for (const entry of entries) {
+    if (!entry.isIntersecting) continue;
+    navLinks.forEach(a => {
+      if (a.getAttribute("href") === `#${entry.target.id}`) a.setAttribute("aria-current", "true");
+      else a.removeAttribute("aria-current");
+    });
+  }
+}, { rootMargin: "-45% 0px -50% 0px" });
+document.querySelectorAll("main > section").forEach(s => sectionObserver.observe(s));
+</script>
+</body>
+</html>
