@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, statSync } from "node:fs";
 
 const read = (file) => readFileSync(new URL(`../${file}`, import.meta.url), "utf8");
 const pages = { "index.html": read("index.html"), "podcast.html": read("podcast.html") };
@@ -48,13 +48,52 @@ test("Podcast-Seite: gleicher Header, Menüpunkt aktiv, Links zurück zur Starts
   assert.match(podcast, /href="index.html#quiz"/, "Weg zurück zum Quiz");
 });
 
-test("Podcast-Seite: Platzhalter, solange die Folge nicht online ist", () => {
-  assert.match(siteJs, /const PODCAST = \{[\s\S]*?file: "",/, "ohne Datei startet die Seite im Platzhalter-Modus");
+// PODCAST aus site.js lesen, ohne den DOM-Teil auszuführen
+const podcastConfig = Function(`${siteJs.match(/const PODCAST = \{[\s\S]*?\n\};/)[0]}; return PODCAST;`)();
+const seconds = (at) => at.split(":").map(Number).reduce((sum, part) => sum * 60 + part, 0);
+
+test("Podcast-Seite: Platzhalter-Logik bleibt für künftige Folgen erhalten", () => {
   assert.match(podcast, /if \(!PODCAST\.file\)/, "Player prüft, ob eine Datei eingetragen ist");
   assert.match(podcast, /Die Folge erscheint bald/);
   assert.match(podcast, /Das Transkript ergänzen wir/, "Hinweis, solange kein Transkript da ist");
   assert.match(podcast, /<details class="transcript"/, "Transkript als aufklappbarer Bereich");
   assert.match(podcast, /el\("audio", \{ controls: ""/, "nativer Player mit Bedienelementen, per Tastatur bedienbar");
+  assert.match(podcast, /console\.error\("Transkript konnte nicht geladen werden:"/, "Ladefehler wird gemeldet, nicht verschluckt");
+});
+
+test("Podcast: Audiodatei ist vorhanden und klein genug für GitHub", () => {
+  assert.ok(podcastConfig.file, "Folge ist eingetragen");
+  const url = new URL(`../${podcastConfig.file}`, import.meta.url);
+  assert.ok(existsSync(url), `${podcastConfig.file} fehlt`);
+  const mb = statSync(url).size / 1024 / 1024;
+  assert.ok(mb < 50, `${podcastConfig.file} hat ${mb.toFixed(1)} MB, GitHub warnt ab 50 MB`);
+  assert.match(podcastConfig.duration, /^\d{1,2}:\d{2}$/, "Länge als mm:ss");
+});
+
+test("Podcast: Transkript-Datei ist vorhanden und in Absätze gegliedert", () => {
+  const url = new URL(`../${podcastConfig.transcriptFile}`, import.meta.url);
+  assert.ok(existsSync(url), `${podcastConfig.transcriptFile} fehlt`);
+  const paragraphs = readFileSync(url, "utf8").split(/\n\s*\n/).filter((p) => p.trim());
+  assert.ok(paragraphs.length >= 5, `nur ${paragraphs.length} Absätze`);
+});
+
+test("Podcast: Kapitel im Player und Zwischenüberschriften im Transkript stimmen überein", () => {
+  const transcript = readFileSync(new URL(`../${podcastConfig.transcriptFile}`, import.meta.url), "utf8");
+  const headings = [...transcript.matchAll(/^## ([\d:]+) · (.+)$/gm)].map((m) => ({ at: m[1], title: m[2] }));
+  assert.deepEqual(headings, podcastConfig.chapters.map(({ at, title }) => ({ at, title })));
+});
+
+test("Podcast: Kapitel sind gültig, aufsteigend und innerhalb der Folge", () => {
+  const total = seconds(podcastConfig.duration);
+  let last = -1;
+  for (const c of podcastConfig.chapters) {
+    assert.match(c.at, /^\d{1,2}:\d{2}$/, `Zeitformat bei „${c.title}“`);
+    assert.ok(c.title && c.title.length <= 40, `Kapiteltitel „${c.title}“`);
+    const s = seconds(c.at);
+    assert.ok(s > last, `„${c.title}“ muss nach dem vorherigen Kapitel liegen`);
+    assert.ok(s < total, `„${c.title}“ liegt hinter dem Ende der Folge`);
+    last = s;
+  }
 });
 
 test("Gemeinsames JS ist nicht doppelt in den Seiten definiert", () => {

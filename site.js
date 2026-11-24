@@ -4,17 +4,35 @@
 const LINKS = { vwa: "", podcast: "", instagram: "" };
 
 /* Podcast-Folge für podcast.html.
-   file: MP3 neben den HTML-Dateien, z. B. "folge-1.mp3". Leer = Hinweis „Folge erscheint bald“.
+   file: Audiodatei (M4A/AAC oder MP3) relativ zur Seite. Leer = Hinweis „Folge erscheint bald“.
+   duration: Länge als „mm:ss“. Leer = wird aus der Datei gelesen.
    chapters: [{ at: "03:15", title: "Geld" }, …] – Klick springt im Player an die Stelle.
-   transcript: Text der Folge, Absätze durch eine Leerzeile getrennt. Wichtig für Barrierefreiheit. */
+   transcriptFile: Textdatei mit dem Transkript, Absätze durch eine Leerzeile getrennt. Wichtig für Barrierefreiheit. */
 const PODCAST = {
   title: "Welches Studium passt zu mir?",
   episode: "Folge 1",
-  duration: "",
+  duration: "22:11",
   description: "Bjarne studiert dual, Felix in Vollzeit. Im Podcast vergleichen sie ihren Alltag: Geld, Stress, Freizeit und was sie heute anders machen würden.",
-  file: "",
-  chapters: [],
-  transcript: ""
+  file: "podcast/folge-1.m4a",
+  chapters: [
+    { at: "00:00", title: "Begrüßung" },
+    { at: "00:32", title: "Warum dual, warum Vollzeit?" },
+    { at: "01:37", title: "Eine Woche im dualen Studium" },
+    { at: "02:41", title: "Geld: Erwartung und Realität" },
+    { at: "04:07", title: "Anwesenheitspflicht und freie Tage" },
+    { at: "04:46", title: "Praxistransferprojekte und Prüfungen" },
+    { at: "06:39", title: "Wie viel Stress ist es wirklich?" },
+    { at: "07:46", title: "Praxis im Vollzeitstudium" },
+    { at: "09:35", title: "Freizeit und Semesterferien" },
+    { at: "11:19", title: "Vorteile des dualen Studiums" },
+    { at: "13:03", title: "Gehalt und Übernahme" },
+    { at: "15:04", title: "Module und Studieninhalte" },
+    { at: "16:04", title: "Für wen passt welches Studium?" },
+    { at: "17:03", title: "Kurswahl, Credits und Regelstudienzeit" },
+    { at: "19:30", title: "Fazit" },
+    { at: "21:22", title: "Verabschiedung und Quiz-Tipp" }
+  ],
+  transcriptFile: "podcast/folge-1-transkript.txt"
 };
 
 // Dateinamen oder URLs der Fotos vom Drehtag. Leer = Platzhalter „Foto folgt“.

@@ -156,7 +156,8 @@ function renderPlayer() {
   const audio = el("audio", { controls: "", preload: "metadata", src: PODCAST.file, "aria-label": `${PODCAST.episode}: ${PODCAST.title}` });
   audio.appendChild(el("p", {}, "Dein Browser kann die Folge nicht abspielen."));
   if (!PODCAST.duration) audio.addEventListener("loadedmetadata", () => renderFacts(formatTime(audio.duration)));
-  box.appendChild(audio);
+  const download = el("a", { class: "download", href: PODCAST.file, download: "" }, "Folge herunterladen");
+  box.append(audio, download);
   return audio;
 }
 
@@ -178,14 +179,22 @@ function renderChapters(audio) {
   if (!audio) $("chapters-note").textContent = "Die Kapitel lassen sich anspringen, sobald die Folge online ist.";
 }
 
-function renderTranscript() {
+async function renderTranscript() {
   const box = $("transcript-text");
-  const paragraphs = PODCAST.transcript.split(/\n\s*\n/).map(t => t.trim()).filter(Boolean);
-  if (!paragraphs.length) {
+  if (!PODCAST.transcriptFile) {
     box.appendChild(el("p", { class: "note" }, "Das Transkript ergänzen wir, sobald die Folge online ist."));
     return;
   }
-  paragraphs.forEach(t => box.appendChild(el("p", {}, t)));
+  try {
+    const res = await fetch(PODCAST.transcriptFile);
+    if (!res.ok) throw new Error(`HTTP ${res.status} für ${PODCAST.transcriptFile}`);
+    const paragraphs = (await res.text()).split(/\n\s*\n/).map(t => t.trim()).filter(Boolean);
+    // Absätze mit „## “ sind Kapitel-Zwischenüberschriften
+    paragraphs.forEach(t => box.appendChild(t.startsWith("## ") ? el("h4", {}, t.slice(3)) : el("p", {}, t)));
+  } catch (err) {
+    console.error("Transkript konnte nicht geladen werden:", err);
+    box.appendChild(el("p", { class: "note" }, "Das Transkript konnte gerade nicht geladen werden. Bitte lade die Seite neu."));
+  }
 }
 
 $("pod-episode").textContent = `Podcast · ${PODCAST.episode}`;
